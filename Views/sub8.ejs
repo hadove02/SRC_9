@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계약대장 조회</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>📑 계약 대장 조회</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>계약 번호</th>
+                <th>계약 담당자</th>
+                <th>계약 이름</th>
+                <th>계약 금액</th>
+                <th>계약 시작일</th>
+                <th>계약 종료일</th>
+                <th>계약 상태</th>
+                <th>비고</th>
+                <th>고객 이름</th>
+                <th>고객 주소</th>
+                <th>고객 대표</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% allContracts.forEach(contract => { %>
+                <tr>
+                    <td><%= contract.contractNumber %></td>
+                    <td><%= contract.contractManager %></td>
+                    <td><%= contract.contractName %></td>
+                    <td><%= contract.contractAmount %>원</td>
+                    <td><%= contract.contractStartDate %></td>
+                    <td><%= contract.contractEndDate %></td>
+                    <td><%= contract.contractStatus %></td>
+                    <td><%= contract.remarks %></td>
+                    <td><%= contract.clientName %></td>
+                    <td><%= contract.clientAddress %></td>
+                    <td><%= contract.clientRepresentative %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <h1>📑 충청북도 거래실적</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>계약 번호</th>
+                <th>계약 담당자</th>
+                <th>계약 이름</th>
+                <th>계약 금액</th>
+                <th>계약 시작일</th>
+                <th>계약 종료일</th>
+                <th>계약 상태</th>
+                <th>비고</th>
+                <th>고객 이름</th>
+                <th>고객 주소</th>
+                <th>고객 대표</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% chungbukContracts.forEach(contract => { %>
+                <tr>
+                    <td><%= contract.contractNumber %></td>
+                    <td><%= contract.contractManager %></td>
+                    <td><%= contract.contractName %></td>
+                    <td><%= contract.contractAmount %>원</td>
+                    <td><%= contract.contractStartDate %></td>
+                    <td><%= contract.contractEndDate %></td>
+                    <td><%= contract.contractStatus %></td>
+                    <td><%= contract.remarks %></td>
+                    <td><%= contract.clientName %></td>
+                    <td><%= contract.clientAddress %></td>
+                    <td><%= contract.clientRepresentative %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

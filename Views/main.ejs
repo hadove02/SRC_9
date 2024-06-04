@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 화면</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 40px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+        li {
+            position: relative;
+            margin: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 500px;
+        }
+
+        li:hover .submenu {
+            top: 75px;
+            display: inline-block;
+        }
+    
+    </style>
+
+
+
+</head>
+<body>
+    <h1>객소공 9팀 프로젝트</h1>
+    
+    <ul>
+        <li>
+            1️⃣ 인사
+            <ul class="submenu">
+                <li  onclick="window.location.href='/sub1'">경력정보입력</li>
+                <li  onclick="window.location.href='/sub2'">경력정보 조회</li>
+            </ul>
+        </li>
+        <li>
+            2️⃣ 급여
+            <ul class="submenu">
+                <li  onclick="window.location.href='/sub3'">퇴직 정산</li>
+                <li  onclick="window.location.href='/sub4'">정산 내역 출력</li>
+            </ul>
+        </li>
+        <li>
+            3️⃣ 예산
+            <ul class="submenu">
+                <li onclick="window.location.href='/sub5'">세목별 편성 예산 및 집행내역 입력</li>
+                <li onclick="window.location.href='/sub6'">예산서 출력</li>
+            </ul>
+        </li>
+        <li>
+            4️⃣ 계약
+            <ul class="submenu">
+                <li onclick="window.location.href='/sub7'">계약서 작성</li>
+                <li onclick="window.location.href='/sub8'">최종 계약대장 조회</li>
+            </ul>
+        </li>
+        <li>
+            5️⃣ 회계
+            <ul class="submenu">
+                <li onclick="window.location.href='/sub9'">월별부서운영비 생성</li>
+                <li onclick="window.location.href='/sub10'">월별부서운영비 조회</li>
+            </ul>
+        </li>
+        <li>
+            6️⃣ 자산
+            <ul class="submenu">
+                <li onclick="window.location.href='/sub11'">자산명세서 생성</li>
+                <li onclick="window.location.href='/sub12'">자산명세서 조회</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

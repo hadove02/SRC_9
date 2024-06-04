@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정산 내역 출력</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="container">
+    <h1>정산 내역</h1>
+    <table border="1">
+        <tr>
+            <td>년도</td>
+            <td>기초퇴직금액</td>
+            <td>평균 임금</td>
+            <td>연차 수당</td>
+            <td>경영성과급</td>
+        </tr>
+        <% allRetirePayment.forEach(retirePayment => { %>
+            <tr>
+                <td><%=retirePayment.year%></td>
+                <td><%=retirePayment.severanceAmount%></td>
+                <td><%=retirePayment.avgAmount%></td>
+                <td><%=retirePayment.annualAmount%></td>
+                <td><%=retirePayment.managementAmount%></td>
+            </tr>
+        <% }) %>
+    </table>
+</div>
+</body>
+</html>
