@@ -9,12 +9,27 @@ function calculateSeveranceAmount() {
 }
 
 //정산일자 셋팅
-function workDay() {
-    connection.query
-}
-
-function exclusionDay() {
-
+async function workDay(careerInfoId) {
+    return new Promise((resolve, reject) => {
+        const query = "SELECT startDate, endDate, approval FROM internalmobility WHERE careerInfoId LIKE ?";
+        connection.query(query, [careerInfoId], (err, result) => {
+            if (err) {
+                console.log(err);
+                reject(err); // 에러 발생 시, reject 호출
+            } else {
+                if (result.length > 0) {
+                    const startDate = new Date(result[0].startDate);
+                    const endDate = new Date(result[0].endDate);
+                    const diffTime = Math.abs(endDate - startDate);
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    console.log(diffDays - result[0].approval);
+                    resolve(diffDays - result[0].approval); // 날짜 차이를 resolve로 반환
+                } else {
+                    resolve(""); // 결과가 없는 경우, 빈 문자열 반환
+                }
+            }
+        });
+    });
 }
 
 //연봉실지급액
@@ -46,28 +61,17 @@ function taxAccountantApprove() {
 
 }
 
-router.post('/sub3/registerAvg', (req, res) => {
-    connection.query('update retirepayment set avgAmount = ' + req.body.avgAmount + ' WHERE year LIKE ' + req.body.year, (err, resulte) => {
+router.get('/', async (req, res) => {
+    const careerInfoId = req.query.careerInfoId;
 
-    })
-
-    res.render('sub3');
+    try {
+        const workDays = await workDay(careerInfoId); // await를 사용해 비동기 처리
+        res.render('sub3', {
+            workDay: workDays
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("서버 에러 발생");
+    }
 });
-
-router.post('/sub3/registerAnnual', (req, res) => {
-    connection.query('update retirepayment set avgAmount = ' + req.body.annualAmount + ' WHERE year LIKE ' + req.body.year, (err, resulte) => {
-
-    })
-
-    res.render('sub3');
-})
-
-router.post('/sub3/registerManagement', (req, res) => {
-    connection.query('update retirepayment set avgAmount = ' + req.body.managementAmount + ' WHERE year LIKE ' + req.body.year, (err, resulte) => {
-
-    })
-
-    res.render('sub3');
-})
-
 module.exports = router;
