@@ -8,19 +8,19 @@ function getData() {
 
 }
 
+//req: 주소창
 router.get('/', (req, res) => {
-    connection.query("select * from retirePayment", (err, result) => {
+    const employeeNo = req.query.employeeCode;
+    connection.query("SELECT * FROM retirePayment WHERE employeeNo LIKE ?", [employeeNo], (err, result) => {
         if (err) {
             console.log(err);
+            res.status(500).send('Database query error');
         } else {
-            console.log("sub4 success")
-            console.log(result)
             res.render('sub4', {
                 allRetirePayment: result
             });
         }
-    })
-});
-
+    });
+})
 
 module.exports = router;

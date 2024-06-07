@@ -10,7 +10,7 @@ function calculateSeveranceAmount() {
 
 //정산일자 셋팅
 function workDay() {
-
+    connection.query
 }
 
 function exclusionDay() {
